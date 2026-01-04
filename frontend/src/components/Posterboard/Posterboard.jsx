@@ -67,6 +67,28 @@ export default function Posterboard() {
       console.log(error.message);
     }
   };
+
+  const getPostDate = (post) => {
+    if (post && post.createdAt) {
+      const created = new Date(post.createdAt);
+      if (!Number.isNaN(created.getTime())) return created;
+    }
+
+    if (post && post._id) {
+      const objectId = String(post._id);
+      if (objectId.length >= 8) {
+        const seconds = Number.parseInt(objectId.substring(0, 8), 16);
+        if (!Number.isNaN(seconds)) return new Date(seconds * 1000);
+      }
+    }
+
+    return null;
+  };
+
+  const formatPostDate = (date) => {
+    if (!date || Number.isNaN(date.getTime())) return '';
+    return date.toLocaleString();
+  };
   return (
     <div className="posterboard">
       <section className="posterboard_container">
@@ -117,9 +139,12 @@ export default function Posterboard() {
                 {posts.map((post) => (
                   <div className="posterboard_post" key={post._id}>
                     <h3>{post.title}</h3>
-                    {post.author && (
-                      <p className="posterboard_author">{post.author}</p>
-                    )}
+                    <p className="posterboard_meta">
+                      By {post.author || 'Unknown'}
+                      {formatPostDate(getPostDate(post))
+                        ? ` • ${formatPostDate(getPostDate(post))}`
+                        : ''}
+                    </p>
                     <p>{post.text}</p>
                   </div>
                 ))}

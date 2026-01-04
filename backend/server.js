@@ -110,7 +110,9 @@ server.post("/register", async (request, response) => {
 // GET POSTS PATH
 server.get("/posts", async (request, response) => {
   try {
-    await Post.find().then((result) => response.status(200).send(result));
+    await Post.find()
+      .sort({ createdAt: -1 })
+      .then((result) => response.status(200).send(result));
   } catch (error) {
     console.log(error.message);
   }
