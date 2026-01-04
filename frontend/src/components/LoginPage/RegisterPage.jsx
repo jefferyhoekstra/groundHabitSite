@@ -5,6 +5,11 @@ import LoginForm from './LoginForm';
 import './loginPage.css';
 
 export default function RegisterPage() {
+  // VITE BASE URL
+  const API_BASE_URL = (
+    import.meta.env.VITE_API_BASE_URL || 'https://ground-habit-site.vercel.app'
+  ).replace(/\/$/, '');
+
   const [formdata, setFormdata] = useState({
     username: '',
     password: '',
@@ -21,18 +26,16 @@ export default function RegisterPage() {
     e.preventDefault();
     console.log('Register form submitted', formdata);
     try {
-      await axios
-        .post('http://localhost:3000/register', formdata)
-        .then((result) => {
-          console.log('Register response:', result.data);
-          setFormdata({ username: '', password: '' });
-          setPostResponse(result.data);
-          if (result.data === 'User added') {
-            navigate('/', {
-              state: { message: 'User Added. Please login' },
-            });
-          }
-        });
+      await axios.post(`${API_BASE_URL}/register`, formdata).then((result) => {
+        console.log('Register response:', result.data);
+        setFormdata({ username: '', password: '' });
+        setPostResponse(result.data);
+        if (result.data === 'User added') {
+          navigate('/', {
+            state: { message: 'User Added. Please login' },
+          });
+        }
+      });
     } catch (error) {
       console.log(error.message);
     }
