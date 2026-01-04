@@ -1,10 +1,15 @@
 .header {
-  display: grid;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   height: 7.5em;
   background-color: var(--color-2);
 
-  background-image: url("../../assets/images/Header/bg3.jpg");
+  padding: 0 1rem;
+  box-sizing: border-box;
+
+  background-image: url('../../assets/images/Header/bg3.jpg');
   background-position-y: 80%;
   background-size: cover;
   border-bottom: 3px solid var(--color-3);
@@ -13,4 +18,24 @@
 .header img {
   margin: 0px;
   width: 128px;
+}
+
+.header__wordmark {
+  text-align: right;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.header__wordmarkGround,
+.header__wordmarkHabit {
+  display: block;
+}
+
+.header__wordmarkGround {
+  color: var(--color-3);
+}
+
+.header__wordmarkHabit {
+  color: var(--color-main);
 }

@@ -3,7 +3,7 @@
 .footer {
   display: grid;
   grid-template-rows: auto;
-  justify-content: center;
+  justify-content: stretch;
 
   width: 100%;
   background-color: var(--color-3);
@@ -11,22 +11,23 @@
   border-top: 3px solid var(--color-2);
 }
 
+.footer nav {
+  width: 100%;
+}
+
 .footer nav ul li img {
   width: 40px;
 }
 
 .footer nav ul {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: max-content;
-
-  gap: clamp(2.5rem, 10vw, 6rem);
-
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
   width: 100%;
   box-sizing: border-box;
 
   margin: 0;
-  padding: 0;
+  padding: 0 1rem;
   list-style: none;
 }
 
