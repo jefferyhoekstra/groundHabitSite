@@ -8,6 +8,7 @@ import Header from "./components/Header/Header";
 import Posterboard from "./components/Posterboard/Posterboard";
 import Scroll from "./components/Scroll/Scroll";
 import User from "./components/User/User";
+import Mailbox from "./components/Mailbox/Mailbox";
 
 // css
 import "./App.css";
@@ -26,6 +27,7 @@ export default function App() {
             <Route path="/scroll" element={<Scroll />} />
             <Route path="/posterboard" element={<Posterboard />} />
             <Route path="/user" element={<User />} />
+            <Route path="/mailbox" element={<Mailbox />} />
           </Routes>
         </section>
         <section className="app_footer">
