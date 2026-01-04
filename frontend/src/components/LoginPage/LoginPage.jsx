@@ -10,6 +10,10 @@ import LoginForm from './LoginForm.jsx';
 // css
 import './loginPage.css';
 
+const API_BASE_URL = (
+  import.meta.env.VITE_API_BASE_URL || 'https://ground-habit-site.vercel.app'
+).replace(/\/$/, '');
+
 // function
 export default function LoginPage() {
   const [formdata, setFormdata] = useState({
@@ -34,17 +38,15 @@ export default function LoginPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios
-        .post('http://localhost:3000/login', formdata)
-        .then((result) => {
-          setFormdata({ username: '', password: '' });
-          setPostResponse(result.data.message);
-          console.log(result.data.message);
-          if (result.data.message === 'Login successful') {
-            handleLogin(result.data.token);
-            navigate('/scroll');
-          }
-        });
+      await axios.post(`${API_BASE_URL}/login`, formdata).then((result) => {
+        setFormdata({ username: '', password: '' });
+        setPostResponse(result.data.message);
+        console.log(result.data.message);
+        if (result.data.message === 'Login successful') {
+          handleLogin(result.data.token);
+          navigate('/scroll');
+        }
+      });
     } catch (error) {
       console.log(error.message);
     }
