@@ -27,7 +27,7 @@
   box-sizing: border-box;
 
   margin: 0;
-  padding: 0 clamp(0.75rem, 4vw, 1.5rem);
+  padding: 0 clamp(1rem, 5vw, 2rem);
   list-style: none;
 }
 
