@@ -1,0 +1,75 @@
+// INITIALIZATION
+const express = require("express");
+const server = express();
+const port = 3000;
+const cors = require("cors");
+const mongoose = require("mongoose");
+require("dotenv").config();
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const { DB_URI, JWT_SECRET } = process.env;
+const User = require("./models/user");
+
+// MIDDLEWARE
+server.use(cors());
+server.use(express.json());
+server.use(express.urlencoded({ extended: true }));
+
+// DATABASE CONNECTION
+mongoose
+  .connect(DB_URI)
+  .then(() => {
+    server.listen(port, () => {
+      console.log(`Connected to DB\nServer is runing on port ${port}`);
+    });
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
+// PATHS
+server.get("/", (request, response) => {
+  response.send("LIVE!");
+});
+
+// LOGIN PATH
+server.post("/login", async (request, response) => {
+  const { username, password } = request.body;
+  const jwtToken = jwt.sign({ id: username }, JWT_SECRET, {
+    expiresIn: "1h",
+  });
+  try {
+    await User.findOne({ username }).then(async (result) => {
+      if (result) {
+        const isMatch = await bcrypt.compare(password, result.password);
+        if (isMatch) {
+          response.send({ message: "Login successful", token: jwtToken });
+        } else {
+          response.send({ message: "Invalid credentials" });
+        }
+      } else {
+        response.send({ message: "Invalid credentials" });
+      }
+    });
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
+// REGISTER PATH
+server.post("/register", async (request, response) => {
+  const { username, password } = request.body;
+  const hashedPassword = await bcrypt.hash(password, 10);
+  const user = new User({ username, password: hashedPassword });
+
+  try {
+    await user.save().then((result) => response.status(201).send("User added"));
+  } catch (error) {
+    if (error.code === 11000) {
+      response.send("Username already exists");
+    } else {
+      response.send("An error occurred");
+    }
+    // console.log(error.message);
+  }
+});
