@@ -1,0 +1,26 @@
+@import url("./variables.css");
+
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.app {
+  height: 100%;
+
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.app_main {
+  overflow: auto;
+
+  background-color: var(--color-main);
+}
+
+.app_footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
