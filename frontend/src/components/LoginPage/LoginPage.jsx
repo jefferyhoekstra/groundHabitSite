@@ -1,7 +1,7 @@
 // import
 
 // css
-import "./loginpage.css";
+import "./loginPage.css";
 
 // function
 export default function LoginPage() {
