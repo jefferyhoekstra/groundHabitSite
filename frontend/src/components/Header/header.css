@@ -7,7 +7,7 @@
   background-image: url("../../assets/images/Header/bg3.jpg");
   background-position-y: 80%;
   background-size: cover;
-  border-bottom: 8px solid var(--color-3);
+  border-bottom: 3px solid var(--color-3);
 }
 
 .header img {

@@ -7,10 +7,12 @@
 
   width: 100%;
   background-color: var(--color-3);
+
+  border-top: 3px solid var(--color-2);
 }
 
 .footer nav ul li img {
-  width: 50px;
+  width: 40px;
 }
 
 .footer nav ul {
