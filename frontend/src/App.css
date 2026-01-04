@@ -10,6 +10,7 @@
 .app {
   height: 100vh;
   height: 100dvh;
+  overflow-x: hidden;
 
   display: grid;
   grid-template-rows: auto 1fr auto;
@@ -17,6 +18,7 @@
 
 .app_main {
   overflow: auto;
+  overflow-x: hidden;
   min-height: 0;
   -webkit-overflow-scrolling: touch;
 
