@@ -25,6 +25,7 @@
   line-height: 1;
   font-weight: 700;
   letter-spacing: 0.5px;
+  font-size: clamp(1.25rem, 3.5vw, 1.75rem);
 }
 
 .header__wordmarkGround,
@@ -37,5 +38,5 @@
 }
 
 .header__wordmarkHabit {
-  color: var(--color-main);
+  color: var(--color-accent);
 }
