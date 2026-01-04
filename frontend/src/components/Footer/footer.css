@@ -20,7 +20,7 @@
   grid-auto-flow: column;
   grid-auto-columns: max-content;
 
-  gap: clamp(1rem, 8vw, 3.5rem);
+  gap: clamp(2.5rem, 10vw, 6rem);
 
   width: 100%;
   box-sizing: border-box;
