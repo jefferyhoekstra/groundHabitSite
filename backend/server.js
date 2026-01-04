@@ -9,6 +9,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { DB_URI, JWT_SECRET } = process.env;
 const User = require("./models/user");
+const Post = require("./models/post");
 
 // MIDDLEWARE
 server.use(cors());
@@ -71,5 +72,29 @@ server.post("/register", async (request, response) => {
       response.send("An error occurred");
     }
     // console.log(error.message);
+  }
+});
+
+// GET POSTS PATH
+server.get("/posts", async (request, response) => {
+  try {
+    await Post.find().then((result) => response.status(200).send(result));
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
+// ADD POSTS PATH
+server.post("/add-post", async (request, response) => {
+  const { title, text } = request.body;
+  const post = new Post({
+    title,
+    text,
+  });
+
+  try {
+    await post.save().then((result) => response.status(201).send("Post added"));
+  } catch (error) {
+    console.log(error.message);
   }
 });

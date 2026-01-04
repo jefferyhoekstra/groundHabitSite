@@ -44,7 +44,7 @@ export default function LoginPage() {
         console.log(result.data.message);
         if (result.data.message === 'Login successful') {
           handleLogin(result.data.token);
-          navigate('/scroll');
+          navigate('/user');
         }
       });
     } catch (error) {
@@ -62,9 +62,8 @@ export default function LoginPage() {
         btnText={'Login'}
       />
       <p>
-        {/* Not a member yet? Click <Link to={'/create-user'}>here</Link> to
-        register. */}
-        Not a member yet? Contact website owner.
+        Not a member yet? Click <Link to={'/create-user'}>here</Link> to
+        register.
       </p>
       {location.state && <h3>{location.state.message}</h3>}
     </div>
