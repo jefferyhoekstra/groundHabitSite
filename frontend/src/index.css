@@ -1,4 +1,4 @@
-@import "./variables.css";
+@import './variables.css';
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -19,8 +19,9 @@ html,
 body {
   margin: 0;
   height: 100%;
+  overflow: hidden;
 }
 
 body {
-  overflow: hidden;
+  overscroll-behavior: none;
 }

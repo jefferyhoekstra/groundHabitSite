@@ -32,6 +32,7 @@
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   width: 100%;
   max-width: 300px;
+  box-sizing: border-box;
   backdrop-filter: blur(8px);
 }
 
@@ -67,6 +68,7 @@
   border: 2px solid var(--color-1);
   border-radius: 8px;
   font-size: 0.95rem;
+  box-sizing: border-box;
   transition: all 0.3s ease;
   background-color: #fff;
   color: var(--color-main);
@@ -175,7 +177,6 @@
 
   .login-container {
     padding: 1rem;
-    max-width: 100%;
   }
 
   .container-1 h1 {
