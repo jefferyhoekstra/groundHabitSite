@@ -12,7 +12,6 @@ import './loginPage.css';
 
 // function
 export default function LoginPage() {
-  const API_URL = (import.meta.env.VITE_API_URL ?? 'http://localhost:3000').replace(/\/$/, '');
   const [formdata, setFormdata] = useState({
     username: '',
     password: '',
@@ -36,7 +35,7 @@ export default function LoginPage() {
     e.preventDefault();
     try {
       await axios
-        .post(`${API_URL}/login`, formdata)
+        .post('http://localhost:3000/login', formdata)
         .then((result) => {
           setFormdata({ username: '', password: '' });
           setPostResponse(result.data.message);

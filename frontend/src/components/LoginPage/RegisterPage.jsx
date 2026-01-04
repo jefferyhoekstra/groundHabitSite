@@ -5,7 +5,6 @@ import LoginForm from './LoginForm';
 import './loginPage.css';
 
 export default function RegisterPage() {
-  const API_URL = (import.meta.env.VITE_API_URL ?? 'http://localhost:3000').replace(/\/$/, '');
   const [formdata, setFormdata] = useState({
     username: '',
     password: '',
@@ -23,7 +22,7 @@ export default function RegisterPage() {
     console.log('Register form submitted', formdata);
     try {
       await axios
-        .post(`${API_URL}/register`, formdata)
+        .post('http://localhost:3000/register', formdata)
         .then((result) => {
           console.log('Register response:', result.data);
           setFormdata({ username: '', password: '' });
