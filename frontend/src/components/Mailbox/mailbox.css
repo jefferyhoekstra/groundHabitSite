@@ -1,7 +1,15 @@
 .mailbox {
   min-height: 100%;
   width: 100%;
-  background-color: var(--color-1);
+  background-image: linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--color-1) 40%, transparent),
+      color-mix(in srgb, var(--color-1) 40%, transparent)
+    ),
+    url("../../assets/images/Header/bg2.png");
+  background-size: cover;
+  background-position: center;
+  /* background-color: var(--color-1); */
 
   display: flex;
   align-items: center;
