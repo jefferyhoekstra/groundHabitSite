@@ -45,10 +45,20 @@ export default function Posterboard() {
   const handleOnSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${API_BASE_URL}/add-post`, formdata).then((result) => {
-        setPostResponse(result.data);
-        setFormdata({ title: '', text: '' });
-      });
+      await axios
+        .post(
+          `${API_BASE_URL}/add-post`,
+          { ...formdata },
+          {
+            headers: {
+              Authorization: `Bearer ${cookie}`,
+            },
+          }
+        )
+        .then((result) => {
+          setPostResponse(result.data);
+          setFormdata({ title: '', text: '' });
+        });
 
       await axios.get(`${API_BASE_URL}/posts`).then((result) => {
         setPosts(result.data);
@@ -107,6 +117,9 @@ export default function Posterboard() {
                 {posts.map((post) => (
                   <div className="posterboard_post" key={post._id}>
                     <h3>{post.title}</h3>
+                    {post.author && (
+                      <p className="posterboard_author">{post.author}</p>
+                    )}
                     <p>{post.text}</p>
                   </div>
                 ))}

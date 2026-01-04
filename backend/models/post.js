@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const postSchema = new Schema({
+  author: { type: String, default: "Unknown" },
   title: { type: String, required: true },
   text: { type: String, required: true },
 });

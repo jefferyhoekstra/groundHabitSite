@@ -11,6 +11,38 @@ const { DB_URI, JWT_SECRET } = process.env;
 const User = require("./models/user");
 const Post = require("./models/post");
 
+// AUTH
+const getTokenFromRequest = (request) => {
+  const authHeader = request.headers.authorization;
+  if (authHeader && authHeader.startsWith("Bearer ")) {
+    return authHeader.slice("Bearer ".length).trim();
+  }
+
+  const cookieHeader = request.headers.cookie;
+  if (!cookieHeader) return "";
+
+  const cookie = cookieHeader
+    .split(";")
+    .map((c) => c.trim())
+    .find((c) => c.startsWith("jwt-authorization="));
+
+  if (!cookie) return "";
+  return decodeURIComponent(cookie.split("=").slice(1).join("="));
+};
+
+const requireAuth = (request, response, next) => {
+  const token = getTokenFromRequest(request);
+  if (!token) return response.status(401).send("No token");
+
+  try {
+    const decoded = jwt.verify(token, JWT_SECRET);
+    request.user = decoded;
+    next();
+  } catch (error) {
+    return response.status(401).send("Invalid token");
+  }
+};
+
 // MIDDLEWARE
 server.use(cors());
 server.use(express.json());
@@ -85,9 +117,10 @@ server.get("/posts", async (request, response) => {
 });
 
 // ADD POSTS PATH
-server.post("/add-post", async (request, response) => {
+server.post("/add-post", requireAuth, async (request, response) => {
   const { title, text } = request.body;
   const post = new Post({
+    author: request.user.id,
     title,
     text,
   });
