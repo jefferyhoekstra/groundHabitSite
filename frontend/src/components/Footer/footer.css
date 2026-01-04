@@ -13,6 +13,8 @@
 
 .footer nav {
   width: 100%;
+  max-width: clamp(320px, 92vw, 720px);
+  margin: 0 auto;
 }
 
 .footer nav ul li img {

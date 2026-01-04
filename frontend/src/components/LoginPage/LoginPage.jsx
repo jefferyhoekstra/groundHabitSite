@@ -62,8 +62,9 @@ export default function LoginPage() {
         btnText={'Login'}
       />
       <p>
-        Not a member yet? Click <Link to={'/create-user'}>here</Link> to
-        register.
+        {/* Not a member yet? Click <Link to={'/create-user'}>here</Link> to
+        register. */}
+        Not a member yet? Contact website owner.
       </p>
       {location.state && <h3>{location.state.message}</h3>}
     </div>

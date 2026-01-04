@@ -17,7 +17,7 @@
 
 .container-1 h1 {
   color: var(--color-3);
-  font-size: 1.75rem;
+  font-size: clamp(2rem, 6vw, 2.75rem);
   margin-bottom: 1rem;
   text-align: center;
   font-weight: 600;
@@ -31,7 +31,7 @@
   padding: 1.25rem;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   width: 100%;
-  max-width: 300px;
+  max-width: 360px;
   box-sizing: border-box;
   backdrop-filter: blur(8px);
 }
@@ -39,7 +39,7 @@
 .login-container form {
   display: flex;
   flex-direction: column;
-  gap: 0.9rem;
+  gap: 1rem;
 }
 
 .login-container br {
@@ -50,24 +50,24 @@
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.6rem;
 }
 
 .form-group label {
   color: var(--color-main);
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 1rem;
   letter-spacing: 0.3px;
 }
 
 .form-group input {
   width: 100%;
-  max-width: 280px;
-  align-self: flex-start;
-  padding: 0.55rem 0.75rem;
+  max-width: 100%;
+  align-self: stretch;
+  padding: 0.75rem 0.9rem;
   border: 2px solid var(--color-1);
   border-radius: 8px;
-  font-size: 0.95rem;
+  font-size: 1rem;
   box-sizing: border-box;
   transition: all 0.3s ease;
   background-color: #fff;
@@ -89,12 +89,12 @@
 .login-container button[type='submit'] {
   width: fit-content;
   align-self: center;
-  padding: 0.6rem 1rem;
+  padding: 0.75rem 1.25rem;
   background: linear-gradient(135deg, var(--color-2) 0%, var(--color-1) 100%);
   color: var(--color-3);
   border: none;
   border-radius: 8px;
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -180,6 +180,6 @@
   }
 
   .container-1 h1 {
-    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
   }
 }
