@@ -22,7 +22,16 @@
   min-height: 0;
   -webkit-overflow-scrolling: touch;
 
+  /* Hide scrollbar (keep scrolling) */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
   background-color: var(--color-main);
+}
+
+.app_main::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 .app_footer {
