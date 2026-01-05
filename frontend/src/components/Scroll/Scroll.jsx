@@ -1,6 +1,9 @@
 // import
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
+import { jwtDecode } from 'jwt-decode';
 
 // css
 import './scroll.css';
@@ -13,12 +16,54 @@ export default function Scroll() {
 
   // STATES
   const [posts, setPosts] = useState([]);
+  const [currentUser, setCurrentUser] = useState('');
+
+  // CONSTS
+  const navigate = useNavigate();
+  const cookie = Cookies.get('jwt-authorization');
 
   useEffect(() => {
+    if (cookie) {
+      const decoded = jwtDecode(cookie);
+      setCurrentUser(decoded.id);
+    }
     axios.get(`${API_BASE_URL}/posts`).then((result) => {
       setPosts(result.data);
     });
-  }, []);
+  }, [cookie]);
+
+  const handleEditPost = (post) => {
+    navigate('/edit-post', {
+      state: {
+        post: {
+          title: post.title,
+          text: post.text,
+          _id: post._id,
+        },
+        status: 'edit',
+      },
+    });
+  };
+
+  const handleDeletePost = async (postId) => {
+    try {
+      await axios
+        .delete(`${API_BASE_URL}/posts/${postId}`, {
+          headers: {
+            Authorization: `Bearer ${cookie}`,
+          },
+        })
+        .then((result) => {
+          // refresh
+        });
+
+      await axios.get(`${API_BASE_URL}/posts`).then((result) => {
+        setPosts(result.data);
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   const getPostDate = (post) => {
     if (post && post.createdAt) {
@@ -59,6 +104,15 @@ export default function Scroll() {
                       : ''}
                   </p>
                   <p>{post.text}</p>
+
+                  {currentUser && post.author === currentUser && (
+                    <div className="scroll_actions">
+                      <button onClick={() => handleEditPost(post)}>Edit</button>
+                      <button onClick={() => handleDeletePost(post._id)}>
+                        Delete
+                      </button>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>

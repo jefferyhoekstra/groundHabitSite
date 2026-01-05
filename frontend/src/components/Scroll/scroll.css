@@ -63,6 +63,30 @@
   white-space: pre-wrap;
 }
 
+.scroll_actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.scroll_actions button {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--color-2);
+  background-color: var(--color-accent);
+  color: var(--color-main);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.scroll_actions button:hover {
+  filter: brightness(0.98);
+}
+
+.scroll_actions button:active {
+  transform: translateY(1px);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .scroll {
     scroll-behavior: auto;

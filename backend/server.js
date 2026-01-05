@@ -133,3 +133,44 @@ server.post("/add-post", requireAuth, async (request, response) => {
     console.log(error.message);
   }
 });
+
+// DELETE POSTS PATH
+server.delete("/posts/:id", requireAuth, async (request, response) => {
+  const { id } = request.params;
+  try {
+    const post = await Post.findById(id);
+    if (!post) return response.status(404).send("Post not found");
+    if (post.author !== request.user.id)
+      return response.status(403).send("Not authorized");
+
+    await Post.findByIdAndDelete(id).then((result) =>
+      response.status(200).send("Post deleted")
+    );
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
+// UPDATE POSTS PATH
+server.patch("/posts/:id", requireAuth, async (request, response) => {
+  const postId = request.params.id;
+  const { title, text } = request.body;
+
+  try {
+    const post = await Post.findById(postId);
+    if (!post) return response.status(404).send("Post not found");
+    if (post.author !== request.user.id)
+      return response.status(403).send("Not authorized");
+
+    await Post.findByIdAndUpdate(
+      postId,
+      {
+        title,
+        text,
+      },
+      { runValidators: true }
+    ).then((result) => response.status(200).send("Post updated"));
+  } catch (error) {
+    console.log(error.message);
+  }
+});
