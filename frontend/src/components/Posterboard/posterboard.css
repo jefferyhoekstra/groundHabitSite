@@ -38,28 +38,20 @@
 }
 
 .posterboard_main {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
+  display: flex;
+  justify-content: center;
 }
 
-@media (min-width: 860px) {
-  .posterboard_main {
-    grid-template-columns: 360px 1fr;
-    align-items: start;
-  }
-}
-
-.posterboard_form,
-.posterboard_feed {
+.posterboard_form {
   padding: 16px 18px;
   background-color: var(--color-3);
   border: 1px solid var(--color-2);
   border-radius: 12px;
+  width: 100%;
+  max-width: 420px;
 }
 
-.posterboard_form h2,
-.posterboard_feed h2 {
+.posterboard_form h2 {
   margin: 0 0 12px;
   color: var(--color-main);
   font-size: 16px;
@@ -123,40 +115,6 @@
   margin: 0;
   color: var(--color-1);
   font-size: 13px;
-}
-
-.posterboard_posts {
-  display: grid;
-  gap: 12px;
-}
-
-.posterboard_post {
-  padding: 14px 14px;
-  border-radius: 12px;
-  border: 1px solid var(--color-2);
-  background-color: white;
-  color: var(--color-main);
-}
-
-.posterboard_post h3 {
-  margin: 0 0 6px;
-  font-size: 15px;
-  font-weight: 800;
-  line-height: 1.25;
-}
-
-.posterboard_meta {
-  margin: 0 0 8px;
-  color: var(--color-2);
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.posterboard_post p {
-  margin: 0;
-  color: var(--color-1);
-  line-height: 1.45;
-  white-space: pre-wrap;
 }
 
 @media (prefers-reduced-motion: reduce) {
