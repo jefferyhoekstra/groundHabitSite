@@ -84,6 +84,11 @@
   outline: none;
 }
 
+.posterboard_form textarea {
+  resize: none;
+  overflow: hidden;
+}
+
 .posterboard_form input:focus,
 .posterboard_form textarea:focus {
   border-color: var(--color-1);

@@ -42,6 +42,12 @@ export default function EditPostPage() {
     setFormdata({ ...formdata, [e.target.name]: e.target.value });
   };
 
+  const handleAutoResize = (e) => {
+    if (!e || !e.target) return;
+    e.target.style.height = 'auto';
+    e.target.style.height = `${e.target.scrollHeight}px`;
+  };
+
   const handleOnSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -89,6 +95,7 @@ export default function EditPostPage() {
                   id="text"
                   value={formdata.text}
                   onChange={handleOnChange}
+                  onInput={handleAutoResize}
                   rows={5}
                   required
                 />
