@@ -1,5 +1,5 @@
 // import
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 import Cookies from 'js-cookie';
@@ -20,6 +20,9 @@ export default function Posterboard() {
     text: '',
   });
   const [postResponse, setPostResponse] = useState('');
+
+  // REFS
+  const textAreaRef = useRef(null);
 
   // CONSTS
   const navigate = useNavigate();
@@ -43,6 +46,13 @@ export default function Posterboard() {
     e.target.style.height = 'auto';
     e.target.style.height = `${e.target.scrollHeight}px`;
   };
+
+  useEffect(() => {
+    if (textAreaRef.current) {
+      textAreaRef.current.style.height = 'auto';
+      textAreaRef.current.style.height = `${textAreaRef.current.scrollHeight}px`;
+    }
+  }, [formdata.text]);
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
@@ -93,6 +103,7 @@ export default function Posterboard() {
                 <textarea
                   name="text"
                   id="text"
+                  ref={textAreaRef}
                   value={formdata.text}
                   onChange={handleOnChange}
                   onInput={handleAutoResize}
