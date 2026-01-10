@@ -34,9 +34,9 @@ export default function User() {
         <h1>Your Dashboard</h1>
         <div className="user-info">
           <h3>{`Hello, ${currentUser}`}</h3>
-          <button onClick={handleLogout} className="logout-btn">
+          {/* <button onClick={handleLogout} className="logout-btn">
             Logout
-          </button>
+          </button> */}
         </div>
       </div>
     </div>
