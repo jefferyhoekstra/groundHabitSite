@@ -49,10 +49,11 @@
 @media (max-width: 520px) {
   .footer nav ul {
     justify-content: center;
+    gap: 0.75rem 1.25rem;
   }
 
   .footer nav ul li a {
-    font-size: 0.95rem;
-    padding: 0.6rem 0;
+    font-size: 1rem;
+    padding: 0.75rem 0.25rem;
   }
 }
