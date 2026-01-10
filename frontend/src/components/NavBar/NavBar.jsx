@@ -51,9 +51,9 @@ export default function NavBar({ currentUser, handleLogout }) {
                 alt=""
               />
             </Link>
-            {currentUser ? (
-              <span className="navbar_user">{`${currentUser}`}</span>
-            ) : null}
+            <span className="navbar_user">
+              {currentUser ? `${currentUser}` : 'Not signed in'}
+            </span>
             {currentUser ? (
               <button type="button" onClick={() => handleLogout()}>
                 Logout

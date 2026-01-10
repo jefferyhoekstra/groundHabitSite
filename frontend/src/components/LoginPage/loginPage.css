@@ -23,6 +23,13 @@
   color: var(--color-text);
 }
 
+.login_subtitle {
+  margin: 0;
+  color: var(--color-muted);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
 /* Form Container */
 .login-container {
   max-width: 480px;
