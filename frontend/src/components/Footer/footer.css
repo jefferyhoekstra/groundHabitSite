@@ -19,7 +19,7 @@
 
 .footer nav ul {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
   gap: 0.25rem 1rem;
@@ -27,7 +27,7 @@
   box-sizing: border-box;
 
   margin: 0;
-  padding: 0 clamp(1rem, 5vw, 2rem);
+  padding: 0 clamp(1rem, 5vw, 2.5rem);
   list-style: none;
 }
 
@@ -48,8 +48,9 @@
 
 @media (max-width: 520px) {
   .footer nav ul {
-    justify-content: center;
+    justify-content: space-evenly;
     gap: 0.75rem 1.25rem;
+    padding: 0 clamp(0.75rem, 4vw, 1.25rem);
   }
 
   .footer nav ul li a {
