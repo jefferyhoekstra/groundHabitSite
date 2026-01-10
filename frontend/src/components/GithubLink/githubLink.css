@@ -1,0 +1,45 @@
+@import url('../../variables.css');
+
+.github_link {
+  position: fixed;
+  left: 16px;
+  bottom: 84px;
+  z-index: 50;
+
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-3);
+  color: var(--color-text);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-decoration: none;
+}
+
+.github_link:hover {
+  color: var(--color-accent-strong);
+}
+
+.github_link_icon {
+  width: 28px;
+  height: 28px;
+  display: block;
+}
+
+@media (max-width: 520px) {
+  .github_link {
+    left: 12px;
+    bottom: 96px;
+    width: 52px;
+    height: 52px;
+  }
+
+  .github_link_icon {
+    width: 30px;
+    height: 30px;
+  }
+}

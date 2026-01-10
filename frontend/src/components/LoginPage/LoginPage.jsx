@@ -1,8 +1,7 @@
 // import
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
-import Cookies from 'js-cookie';
 
 // components
 import LoginForm from './LoginForm.jsx';
@@ -15,7 +14,7 @@ const API_BASE_URL = (
 ).replace(/\/$/, '');
 
 // function
-export default function LoginPage() {
+export default function LoginPage({ handleLogin }) {
   const [formdata, setFormdata] = useState({
     username: '',
     password: '',
@@ -24,15 +23,9 @@ export default function LoginPage() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // USE EFFECT
-
   // Handlers
   const handleChange = (e) => {
     setFormdata({ ...formdata, [e.target.name]: e.target.value });
-  };
-
-  const handleLogin = (jwtToken) => {
-    Cookies.set('jwt-authorization', jwtToken);
   };
 
   const handleSubmit = async (e) => {

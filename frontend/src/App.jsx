@@ -14,6 +14,7 @@ import Blog from './components/Blog/Blog';
 import User from './components/User/User';
 import Mailbox from './components/Mailbox/Mailbox';
 import About from './components/About/About';
+import GithubLink from './components/GithubLink/GithubLink';
 import PrivateRoute from '../utilities/PrivateRoute';
 import RegisterPage from './components/LoginPage/RegisterPage';
 
@@ -23,16 +24,22 @@ import './App.css';
 // function
 export default function App() {
   const [currentUser, setCurrentUser] = useState('');
-  const cookie = Cookies.get('jwt-authorization');
 
   useEffect(() => {
-    if (cookie) {
-      const decoded = jwtDecode(cookie);
+    const token = Cookies.get('jwt-authorization');
+    if (token) {
+      const decoded = jwtDecode(token);
       setCurrentUser(decoded.id);
     } else {
       setCurrentUser('');
     }
-  }, [cookie]);
+  }, []);
+
+  const handleLogin = (jwtToken) => {
+    Cookies.set('jwt-authorization', jwtToken);
+    const decoded = jwtDecode(jwtToken);
+    setCurrentUser(decoded.id);
+  };
 
   const handleLogout = () => {
     Cookies.remove('jwt-authorization');
@@ -45,6 +52,7 @@ export default function App() {
         <section className="app_header">
           <NavBar currentUser={currentUser} handleLogout={handleLogout} />
         </section>
+        <GithubLink />
         <section className="app_main">
           <Routes>
             <Route element={<PrivateRoute />}>
@@ -56,7 +64,7 @@ export default function App() {
               <Route path="/mailbox" element={<Mailbox />} />
             </Route>
             <Route path="/about" element={<About />} />
-            <Route path="/" element={<LoginPage />} />
+            <Route path="/" element={<LoginPage handleLogin={handleLogin} />} />
             <Route path="/create-user" element={<RegisterPage />} />
           </Routes>
         </section>
