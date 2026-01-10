@@ -1,4 +1,4 @@
-.scroll {
+.blog {
   min-height: 100%;
   width: 100%;
   display: flex;
@@ -7,21 +7,21 @@
   box-sizing: border-box;
 }
 
-.scroll_container {
+.blog_container {
   width: min(980px, 100%);
   display: grid;
   gap: 16px;
   align-content: start;
 }
 
-.scroll_feed {
+.blog_feed {
   padding: 16px 18px;
   background-color: var(--color-3);
   border: 1px solid var(--color-2);
   border-radius: 12px;
 }
 
-.scroll_feed h1 {
+.blog_feed h1 {
   margin: 0 0 12px;
   color: var(--color-main);
   font-size: clamp(22px, 2.2vw, 32px);
@@ -29,12 +29,12 @@
   line-height: 1.2;
 }
 
-.scroll_posts {
+.blog_posts {
   display: grid;
   gap: 12px;
 }
 
-.scroll_post {
+.blog_post {
   padding: 14px 14px;
   border-radius: 12px;
   border: 1px solid var(--color-2);
@@ -42,34 +42,34 @@
   color: var(--color-main);
 }
 
-.scroll_post h3 {
+.blog_post h3 {
   margin: 0 0 6px;
   font-size: 15px;
   font-weight: 800;
   line-height: 1.25;
 }
 
-.scroll_meta {
+.blog_meta {
   margin: 0 0 8px;
   color: var(--color-2);
   font-size: 13px;
   font-weight: 600;
 }
 
-.scroll_post p {
+.blog_post p {
   margin: 0;
   color: var(--color-1);
   line-height: 1.45;
   white-space: pre-wrap;
 }
 
-.scroll_actions {
+.blog_actions {
   display: flex;
   gap: 10px;
   margin-top: 12px;
 }
 
-.scroll_actions button {
+.blog_actions button {
   padding: 8px 12px;
   border-radius: 10px;
   border: 1px solid var(--color-2);
@@ -79,16 +79,16 @@
   cursor: pointer;
 }
 
-.scroll_actions button:hover {
+.blog_actions button:hover {
   filter: brightness(0.98);
 }
 
-.scroll_actions button:active {
+.blog_actions button:active {
   transform: translateY(1px);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .scroll {
+  .blog {
     scroll-behavior: auto;
   }
 }

@@ -69,7 +69,7 @@ export default function EditPostPage() {
         })
         .then((result) => {
           setPostResponse(result.data);
-          navigate('/scroll');
+          navigate('/blog');
         });
     } catch (error) {
       console.log(error.message);

@@ -6,10 +6,10 @@ import Cookies from 'js-cookie';
 import { jwtDecode } from 'jwt-decode';
 
 // css
-import './scroll.css';
+import './blog.css';
 
 // function
-export default function Scroll() {
+export default function Blog() {
   const API_BASE_URL = (
     import.meta.env.VITE_API_BASE_URL || 'https://ground-habit-site.vercel.app'
   ).replace(/\/$/, '');
@@ -88,16 +88,16 @@ export default function Scroll() {
   };
 
   return (
-    <div className="scroll">
-      <section className="scroll_container">
-        <section className="scroll_feed">
-          <h1>Scroll</h1>
+    <div className="blog">
+      <section className="blog_container">
+        <section className="blog_feed">
+          <h1>Blog</h1>
           {posts && posts.length ? (
-            <div className="scroll_posts">
+            <div className="blog_posts">
               {posts.map((post) => (
-                <div className="scroll_post" key={post._id}>
+                <div className="blog_post" key={post._id}>
                   <h3>{post.title}</h3>
-                  <p className="scroll_meta">
+                  <p className="blog_meta">
                     By {post.author || 'Unknown'}
                     {formatPostDate(getPostDate(post))
                       ? ` • ${formatPostDate(getPostDate(post))}`
@@ -106,7 +106,7 @@ export default function Scroll() {
                   <p>{post.text}</p>
 
                   {currentUser && post.author === currentUser && (
-                    <div className="scroll_actions">
+                    <div className="blog_actions">
                       <button onClick={() => handleEditPost(post)}>Edit</button>
                       <button onClick={() => handleDeletePost(post._id)}>
                         Delete

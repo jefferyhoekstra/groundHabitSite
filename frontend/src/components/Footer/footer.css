@@ -17,10 +17,6 @@
   margin: 0 auto;
 }
 
-.footer nav ul li img {
-  width: 40px;
-}
-
 .footer nav ul {
   display: flex;
   justify-content: space-between;
@@ -38,4 +34,12 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  color: var(--color-text);
+  font-weight: 600;
+  padding: 0.75rem 0;
+}
+
+.footer nav ul li a:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }

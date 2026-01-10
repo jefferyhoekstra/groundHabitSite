@@ -1,27 +1,27 @@
+@import './components/fonts.css';
 @import './variables.css';
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  /* Typography */
+  font-family:
+    'Space Grotesk',
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    sans-serif;
+  line-height: 1.6;
   font-weight: 400;
-
-  /* color-scheme: light dark */
-  color: rgba(255, 255, 255, 0.87);
-  /* background-color: #242424; */
-
+  color: var(--color-text);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-html,
 body {
   margin: 0;
-  height: 100%;
-  overflow: hidden;
-}
-
-body {
-  overscroll-behavior: none;
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--color-bg);
+  color: var(--color-text);
 }

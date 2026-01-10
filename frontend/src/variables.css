@@ -1,8 +1,15 @@
-/* colors */
+/* Color system */
 :root {
-  --color-main: #0b1f2a;
-  --color-1: #103246;
-  --color-2: #1f5a73;
-  --color-3: #eef3f6;
-  --color-accent: #f2c94c;
+  --color-text: #0f172a;
+  --color-muted: #4b5563;
+  --color-border: #dfe3eb;
+  --color-accent: #d97706;
+  --color-accent-strong: #b45309;
+  --color-bg: #f7f8fb;
+
+  /* Compatibility aliases (older components) */
+  --color-main: var(--color-text);
+  --color-1: var(--color-muted);
+  --color-2: var(--color-accent);
+  --color-3: #ffffff;
 }

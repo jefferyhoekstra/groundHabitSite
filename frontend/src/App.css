@@ -26,7 +26,7 @@
   scrollbar-width: none;
   -ms-overflow-style: none;
 
-  background-color: var(--color-main);
+  background-color: var(--color-bg);
 }
 
 .app_main::-webkit-scrollbar {
